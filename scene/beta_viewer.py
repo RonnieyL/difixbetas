@@ -19,10 +19,10 @@ class BetaViewer(nerfview.Viewer):
             with self.server.gui.add_folder("Geometry Complexity Control"):
                 self.gui_multi_slider = self.server.gui.add_multi_slider(
                     "b Range",
-                    min=-1,
-                    max=1,
+                    min=-5,
+                    max=5,
                     step=0.01,
-                    initial_value=(-1, 1),
+                    initial_value=(-5, 5),
                 )
                 self.gui_multi_slider.on_update(self.rerender)
             with self.server.gui.add_folder("Render Mode"):
