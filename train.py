@@ -133,7 +133,7 @@ def training(args):
             )
             progress_bar.update(1)
 
-            if iteration in args.save_iterations and not args.eval:
+            if iteration in args.save_iterations:
                 print(f"\n[ITER {iteration}] Saving beta_model")
                 scene.save(iteration)
 
