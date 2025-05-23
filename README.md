@@ -2,8 +2,9 @@
 
 [![button](https://img.shields.io/badge/Project-Website-blue.svg?style=social&logo=Google-Chrome)](https://rongliu-leo.github.io/beta-splatting/)
 [![button](https://img.shields.io/badge/Paper-arXiv-red.svg?style=social&logo=arXiv)](https://arxiv.org/abs/2501.18630)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/deformable-beta-splatting/novel-view-synthesis-on-nerf)](https://paperswithcode.com/sota/novel-view-synthesis-on-nerf?p=deformable-beta-splatting)
-[![PWC](https://img.shields.io/youtube/views/3ts52fBZRDs)](https://www.youtube.com/watch?v=3ts52fBZRDs)
+[![button](https://img.shields.io/youtube/views/3ts52fBZRDs)](https://www.youtube.com/watch?v=3ts52fBZRDs)
+[![button](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/deformable-beta-splatting/novel-view-synthesis-on-nerf)](https://paperswithcode.com/sota/novel-view-synthesis-on-nerf?p=deformable-beta-splatting)
+
 
 
 
