@@ -31,6 +31,18 @@
 Abstract: *3D Gaussian Splatting (3DGS) has advanced radiance field reconstruction by enabling real-time rendering. However, its reliance on Gaussian kernels for geometry and low-order Spherical Harmonics (SH) for color encoding limits its ability to capture complex geometries and diverse colors.
 We introduce Deformable Beta Splatting (DBS), a deformable and compact approach that enhances both geometry and color representation. DBS replaces Gaussian kernels with deformable Beta Kernels, which offer bounded support and adaptive frequency control to capture fine geometric details with higher fidelity while achieving better memory efficiency. In addition, we extended the Beta Kernel to color encoding, which facilitates improved representation of diffuse and specular components, yielding superior results compared to SH-based methods. Furthermore, Unlike prior densification techniques that depend on Gaussian properties, we mathematically prove that adjusting regularized opacity alone ensures distribution-preserved Markov chain Monte Carlo (MCMC), independent of the splatting kernel type. Experimental results demonstrate that DBS achieves state-of-the-art visual quality while utilizing only 45\% of the parameters and rendering 1.5x faster than 3DGS-MCMC, highlighting the superior performance of DBS for real-time radiance field rendering.*
 
+## ✨ New Features 
+**The repo is actively growing. If you see something new, pull it through.**
+
+To make sure you're always running the latest and greatest:
+
+```bash
+git pull
+pip install .  # Reinstall to recompile
+```
+- 05/26/2025: Support more features for viewer.
+- 05/25/2025: Support Alpha and Normal maps rendering.
+
 ## Quickstart
 
 This project is built on top of the [Original 3DGS](https://github.com/graphdeco-inria/gaussian-splatting), [3DGS-MCMC](https://github.com/ubc-vision/3dgs-mcmc) and [gsplat](https://github.com/nerfstudio-project/gsplat) code bases. The authors are grateful to the original authors for their open-source codebase contributions.
