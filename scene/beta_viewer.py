@@ -12,7 +12,7 @@ class BetaRenderTabState(RenderTabState):
     # controlable parameters
     near_plane: float = 1e-3
     far_plane: float = 1e3
-    radius_clip: float = 0.0
+    radius_clip: float = 1.0
     b_range: Tuple[float, float] = (-5.0, 5.0)
     backgrounds: Tuple[float, float, float] = (0.0, 0.0, 0.0)
     render_mode: Literal["RGB", "Alpha", "Diffuse", "Specular", "Depth", "Normal"] = (
