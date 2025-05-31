@@ -40,6 +40,7 @@ To make sure you're always running the latest and greatest:
 git pull
 pip install .  # Reinstall to recompile
 ```
+- 05/30/2025: Support the ```--share_url``` feature for both ```train.py``` and ```view.py```.
 - 05/26/2025: Support more features for viewer.
 - 05/25/2025: Support Alpha and Normal maps rendering.
 
