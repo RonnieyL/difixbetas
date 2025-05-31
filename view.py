@@ -24,6 +24,7 @@ def viewing(args):
             camera_state, render_tab_state
         ),
         mode="rendering",
+        share_url=args.share_url,
     )
     print("Viewer running... Ctrl+C to exit.")
     time.sleep(100000)
@@ -34,6 +35,9 @@ if __name__ == "__main__":
     ModelParams(parser), ViewerParams(parser)
     parser.add_argument("--ply", type=str, default=None, help="path to the .ply file")
     parser.add_argument("--png", type=str, default=None, help="path to the png folder")
+    parser.add_argument(
+        "--share_url", action="store_true", help="Share URL for the viewer"
+    )
 
     args = parser.parse_args()
 

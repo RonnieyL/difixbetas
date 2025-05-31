@@ -26,6 +26,7 @@ install_requires = [
     "fused-ssim @ git+https://github.com/rahul-goel/fused-ssim@1272e21a282342e89537159e4bad508b19b34157",
     "plas @ git+https://github.com/fraunhoferhhi/PLAS.git",
     "splines",
+    "requests",
 ]
 
 

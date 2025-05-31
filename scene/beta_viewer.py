@@ -26,9 +26,12 @@ class BetaViewer(Viewer):
         server: viser.ViserServer,
         render_fn: Callable,
         mode: Literal["rendering", "training"] = "rendering",
+        share_url: bool = False,
     ):
         super().__init__(server, render_fn, mode=mode)
         server.gui.set_panel_label("Beta Splatting Viewer")
+        if share_url:
+            server.request_share_url()
 
     def _init_rendering_tab(self):
         self.render_tab_state = BetaRenderTabState()

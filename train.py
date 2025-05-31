@@ -49,6 +49,7 @@ def training(args):
                 camera_state, render_tab_state
             ),
             mode="training",
+            share_url=args.share_url,
         )
 
     iter_start = torch.cuda.Event(enable_timing=True)
@@ -234,6 +235,9 @@ if __name__ == "__main__":
     parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[])
     parser.add_argument("--start_checkpoint", type=str, default=None)
     parser.add_argument("--compress", type=bool, default=True)
+    parser.add_argument(
+        "--share_url", action="store_true", help="Share URL for the viewer"
+    )
     args = parser.parse_args(sys.argv[1:])
 
     args.save_iterations.append(args.iterations)
