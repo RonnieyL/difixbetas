@@ -234,7 +234,13 @@ if __name__ == "__main__":
     parser.add_argument("--quiet", action="store_true")
     parser.add_argument("--checkpoint_iterations", nargs="+", type=int, default=[])
     parser.add_argument("--start_checkpoint", type=str, default=None)
-    parser.add_argument("--compress", type=bool, default=True)
+    parser.add_argument(
+        "--no-compress",
+        action="store_false",
+        dest="compress",
+        help="Disable compression (compression is on by default)",
+    )
+    parser.set_defaults(compress=True)
     parser.add_argument(
         "--share_url", action="store_true", help="Share URL for the viewer"
     )
