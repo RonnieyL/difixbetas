@@ -7,6 +7,7 @@ from scene import BetaModel
 from scene.beta_viewer import BetaViewer
 
 
+@torch.no_grad()
 def viewing(args):
     beta_model = BetaModel(args.sh_degree, args.sb_number)
     if args.ply:
@@ -15,6 +16,10 @@ def viewing(args):
         beta_model.load_png(args.png)
     else:
         raise ValueError("You must provide either a .ply file or a .png folder")
+
+    if args.center:
+        beta_model._xyz -= beta_model._xyz.mean(dim=0, keepdim=True)
+
     bg_color = [1, 1, 1] if args.white_background else [0, 0, 0]
     beta_model.background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
     server = viser.ViserServer(port=args.port, verbose=False)
@@ -37,6 +42,11 @@ if __name__ == "__main__":
     parser.add_argument("--png", type=str, default=None, help="path to the png folder")
     parser.add_argument(
         "--share_url", action="store_true", help="Share URL for the viewer"
+    )
+    parser.add_argument(
+        "--center",
+        action="store_true",
+        help="Center the model in the viewer",
     )
 
     args = parser.parse_args()
