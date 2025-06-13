@@ -46,7 +46,7 @@ def training(args):
         viewer = BetaViewer(
             server=server,
             render_fn=lambda camera_state, render_tab_state: beta_model.view(
-                camera_state, render_tab_state
+                camera_state, render_tab_state, args.center
             ),
             mode="training",
             share_url=args.share_url,
@@ -78,7 +78,7 @@ def training(args):
 
     while True:
         # For non-eval mode, break when reaching the specified iterations
-        if not args.eval and iteration > args.iterations:
+        if iteration > args.iterations:
             break
 
         iter_start.record()
@@ -243,6 +243,11 @@ if __name__ == "__main__":
     parser.set_defaults(compress=True)
     parser.add_argument(
         "--share_url", action="store_true", help="Share URL for the viewer"
+    )
+    parser.add_argument(
+        "--center",
+        action="store_true",
+        help="Center the model in the viewer",
     )
     args = parser.parse_args(sys.argv[1:])
 

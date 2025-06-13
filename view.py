@@ -17,16 +17,13 @@ def viewing(args):
     else:
         raise ValueError("You must provide either a .ply file or a .png folder")
 
-    if args.center:
-        beta_model._xyz -= beta_model._xyz.mean(dim=0, keepdim=True)
-
     bg_color = [1, 1, 1] if args.white_background else [0, 0, 0]
     beta_model.background = torch.tensor(bg_color, dtype=torch.float32, device="cuda")
     server = viser.ViserServer(port=args.port, verbose=False)
     viewer = BetaViewer(
         server=server,
         render_fn=lambda camera_state, render_tab_state: beta_model.view(
-            camera_state, render_tab_state
+            camera_state, render_tab_state, args.center
         ),
         mode="rendering",
         share_url=args.share_url,

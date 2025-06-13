@@ -846,7 +846,7 @@ class BetaModel:
         }
 
     @torch.no_grad()
-    def view(self, camera_state, render_tab_state):
+    def view(self, camera_state, render_tab_state, center=None):
         """Callable function for the viewer."""
         assert isinstance(render_tab_state, BetaRenderTabState)
         if render_tab_state.preview_render:
@@ -860,6 +860,11 @@ class BetaModel:
         c2w = torch.from_numpy(c2w).float().to("cuda")
         K = torch.from_numpy(K).float().to("cuda")
 
+        if center:
+            xyz = self._xyz - self._xyz.mean(dim=0, keepdim=True)
+        else:
+            xyz = self._xyz
+
         render_mode = render_tab_state.render_mode
         mask = torch.logical_and(
             self._beta >= render_tab_state.b_range[0],
@@ -870,7 +875,7 @@ class BetaModel:
         )
 
         render_colors, alphas, meta = rasterization(
-            means=self.get_xyz[mask],
+            means=xyz[mask],
             quats=self.get_rotation[mask],
             scales=self.get_scaling[mask],
             opacities=self.get_opacity.squeeze()[mask],
