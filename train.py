@@ -78,7 +78,7 @@ def training(args):
 
     while True:
         # For non-eval mode, break when reaching the specified iterations
-        if iteration > args.iterations:
+        if not args.eval and iteration > args.iterations:
             break
 
         iter_start.record()
