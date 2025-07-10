@@ -252,10 +252,13 @@ def readCamerasFromTransforms(path, transformsfile, white_background, extension=
         fovx = contents["camera_angle_x"]
 
         frames = contents["frames"]
-        for idx, frame in enumerate(frames):
-            cam_name = os.path.join(path, frame["file_path"] + extension)
+        idx = 0
+        for frame in frames:
+            fname_rel = frame["file_path"] + extension
+            fname = os.path.join(path, fname_rel)
+            if not os.path.exists(fname):
+                continue
 
-            # NeRF 'transform_matrix' is a camera-to-world transform
             c2w = np.array(frame["transform_matrix"])
             # change from OpenGL/Blender camera axes (Y up, Z back) to COLMAP (Y down, Z forward)
             c2w[:3, 1:3] *= -1
@@ -267,9 +270,7 @@ def readCamerasFromTransforms(path, transformsfile, white_background, extension=
             )  # R is stored transposed due to 'glm' in CUDA code
             T = w2c[:3, 3]
 
-            image_path = cam_name
-            image_name = Path(cam_name).stem
-            image = Image.open(image_path)
+            image = Image.open(fname)
 
             im_data = np.array(image.convert("RGBA"))
 
@@ -290,15 +291,16 @@ def readCamerasFromTransforms(path, transformsfile, white_background, extension=
                     uid=idx,
                     R=R,
                     T=T,
-                    FovY=FovY,
-                    FovX=FovX,
+                    FovY=fovy,
+                    FovX=fovx,
                     image=image,
-                    image_path=image_path,
-                    image_name=image_name,
+                    image_path=fname,
+                    image_name=os.path.basename(fname),
                     width=image.size[0],
                     height=image.size[1],
                 )
             )
+            idx += 1
 
     return cam_infos
 

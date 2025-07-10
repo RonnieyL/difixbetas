@@ -836,9 +836,11 @@ class BetaModel:
 
         # # Convert from N,H,W,C to N,C,H,W format
         rgbs = rgbs.permute(0, 3, 1, 2).contiguous()[0]
+        alphas = alphas.permute(0, 3, 1, 2).contiguous()[0]
 
         return {
             "render": rgbs,
+            "alpha": alphas,
             "viewspace_points": meta["means2d"],
             "visibility_filter": meta["radii"] > 0,
             "radii": meta["radii"],

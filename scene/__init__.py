@@ -39,6 +39,7 @@ class Scene:
         resolution_scales=[1.0],
     ):
         self.model_path = args.model_path
+        self.data_path = args.source_path
         self.loaded_iter = None
         self.beta_model = beta_model
         self.best_psnr = 0

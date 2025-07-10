@@ -26,6 +26,7 @@ class Camera(nn.Module):
         image,
         gt_alpha_mask,
         image_name,
+        image_path,
         uid,
         trans=np.array([0.0, 0.0, 0.0]),
         scale=1.0,
@@ -40,6 +41,7 @@ class Camera(nn.Module):
         self.FoVx = FoVx
         self.FoVy = FoVy
         self.image_name = image_name
+        self.image_path = image_path
 
         try:
             self.data_device = torch.device(data_device)
